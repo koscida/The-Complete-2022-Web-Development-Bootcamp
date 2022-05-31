@@ -1,0 +1,114 @@
+
+
+Key
+12979c2c7e6c56280281d7c29dc06004
+
+Latitude: 39.952583
+Longitude: -75.165222
+
+units
+imperial
+
+
+https://api.openweathermap.org/data/2.5/weather?lat=39.952583&lon=-75.165222&exclude=hourly,daily&appid=12979c2c7e6c56280281d7c29dc06004&units=imperial&exclude=hourly,daily
+
+
+---------------------------
+
+- Create the initial files
+
+index.html
+app.js
+
+npm init
+
+npmi i express
+
+
+- Create the boilerplate for app.js
+
+//jshint esversion: 6
+const express = require('express')
+const app = express()
+app.get('/', (req,res) => {
+	res.send('Server is running.')
+})
+app.listen(3000,()=>console.log('Server is running on port 3000'))
+
+
+
+- Make a get request in native express
+
+const https = require('https')
+
+app.get('/', (req,res) => {
+	https.get(API_URI, (response) => {
+		api call
+	})
+})
+
+
+
+- Inside API response
+
+https.get(API_URI, (response) => {
+	
+	response is whole response
+	console.log(response)
+
+	see the status code
+	console.log(response.statusCode)
+
+	wait for data response?
+	response.on('data', (data) => {
+		this will return hexidecimal code
+		console.log(data)
+	})
+	
+})
+
+
+- Parse data into JSON
+
+response.on('data', (data) => {
+	
+	const weatherData = JSON.parse(data)
+	console.log(weatherData)
+
+	const temp = weatherData.main.temp
+	const description = weatherData.weather[0].description
+	const icon = weatherData.weather[0].icon
+	const imgSrc = 'http://openweathermap.org/img/wn/' + icon + '@2x.png'
+
+})
+
+- Change get and post requests
+
+app.get('/', (req, res) => {
+	res.sendFile(__dirname + "/index.html")
+})
+
+app.post('/', (req, res) => {
+	api call
+})
+
+
+- Install body parser
+
+npm i body-parser
+
+const bodyParser = reqire('body-parser')
+app.use(bodyParser.urlencoded({extended: true}))
+const cityName = req.body.cityName
+
+now use cityName in api call
+
+
+
+- write output and send
+
+res.write('<img src="' + imgSrc + '" alt="icon of ' + description + '" />')
+res.write('<p>The temperature in ' + cityName + ' is ' + temp + ' F</p>')
+res.write('<p>The weather is currently ' + description + '</p>')
+res.write('<a href="/">Back</a>')
+res.send()
