@@ -2,7 +2,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const request = require('request')
 const https = require('https')
-const {config} = require('./config')
+require('dotenv').config();
 
 const app = express()
 
@@ -34,8 +34,8 @@ app.post("/", (req, res) => {
 	const jsonData = JSON.stringify(data)
 	console.log(jsonData)
 	
-	const url = "https://" + config.dc + ".api.mailchimp.com/3.0/lists/" + config.listid
-	const auth = 'apikey:' + config.apikey
+	const url = "https://" + process.env.MAILCHIMP_DC + ".api.mailchimp.com/3.0/lists/" + process.env.MAILCHIMP_LISTID
+	const auth = 'apikey:' + process.env.MAILCHIMP_APIKEY
 	
 	const options = {
 		method: 'POST',
