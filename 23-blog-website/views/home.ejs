@@ -1,0 +1,29 @@
+<%- include('./partials/header') -%>
+
+<div class="row my-md-5 my-2">
+	<h1>Home</h1>
+</div>
+
+<div class="row mb-2">
+	<p>
+		<%= content %>
+	</p>
+</div>
+
+<div class="row mb-2">
+	<ul class="list-group list-group-flush">
+		<% posts.forEach( post => { %>
+			<li class="list-group-item prePost">
+				<div class="d-flex w-100 justify-content-between">
+					<h5 class="mb-1"><%= post.title %></h5>
+					<small><%= post.date %></small>
+				</div>
+				<p class="mb-1 text-truncatee postPreviewBody"><%= post.body %></p>
+				<small><a href="/post/<%= post.key %>">Read...</a></small>
+				
+			</li>
+		<% }) %>
+	</ul>
+</div>
+
+<%- include('./partials/footer') -%>
