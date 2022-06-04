@@ -1,0 +1,22 @@
+<%- include("header") -%>
+
+<div class="pageHeader mb-5 p-3 text-white text-center">
+	<h1><%= pageTitle %></h1>
+</div>
+
+<ul class="list-group list-group-flush mb-5">
+	<% items.forEach( ({item, type}) => { %>
+		<li class="list-group-item">
+			<input class="form-check-input me-1" type="checkbox" value="<%= item %>">
+			<p><%= item %></p>
+		</li>
+	<% }) %>
+	<li class="list-group-item newItemGroup">
+		<form action="/" method="POST">
+			<input type="text" name="newItem" id="newItem" class="form-control" placeholder="New Item" />
+			<button type="submit" class="btn btn-danger addBtn badge" name="submit" value="<%= listType %>">Add</button>
+		</form>
+	</li>
+</ul>
+
+<%- include("footer") -%>
