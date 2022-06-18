@@ -3,6 +3,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose")
+const _ = require("lodash")
 const date = require(__dirname + "/date.js");
 
 const app = express();
@@ -45,12 +46,12 @@ const defaultItems = [item1, item2, item3]
 
 
 app.get("/", function(req, res) {
-	res.redirect("/ToDo");
+	res.redirect("/Todo");
 })
 
 app.get("/:listName", function(req,res){
 	const listNameRaw = req.params.listName
-	let listName = listNameRaw.toLowerCase().replace(/([\W_])+/g,'-')
+	let listName = _.capitalize(_.kebabCase(listNameRaw.toLowerCase()))
 	
 	List.findOne({name: listName}, (err, foundList) => {
 		if(!foundList) {
