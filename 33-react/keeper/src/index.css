@@ -5,6 +5,8 @@
 	--green: #314E52;
 	
 	--bg-light: #FFF6F0;
+	--bg-shadow: 0 1px 5px var(--grey);
+	--bg-text: #718E92;
 }
 body {
 	margin: 0;
@@ -13,6 +15,7 @@ body {
 		sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	color: var(--bg-text);
 }
 
 code {
@@ -39,4 +42,60 @@ h1.navbar-brand {
 
 .note {
 	border: 0;
+	box-shadow: var(--bg-shadow);
+}
+
+.note .card-body {
+	color: var(--bg-text);
+}
+.note .card-title {
+	color: var(--green);
+}
+
+
+.note button {
+  position: relative;
+  float: right;
+  margin-right: 10px;
+  color: var(--orange);
+  border: none;
+  cursor: pointer;
+  outline: none;
+  background: transparent;
+}
+
+
+.addArea {
+  position: relative;
+  width: 480px;
+  margin: 10px auto 40px auto;
+  padding: 15px;
+  background: #fff;
+  border-radius: 7px;
+  box-shadow: var(--bg-shadow);
+}
+.addArea input,
+.addArea textarea {
+  width: 100%;
+  border: none;
+  padding: 4px;
+  outline: none;
+  font-size: 1.2em;
+  font-family: inherit;
+  resize: none;
+  color: var(--bg-text);
+}
+.addArea button {
+  position: absolute;
+  right: 18px;
+  bottom: -18px;
+  background: var(--orange);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  outline: none;
 }
