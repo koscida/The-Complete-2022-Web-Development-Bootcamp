@@ -1,0 +1,42 @@
+:root {
+	--orange: #F2A154;
+	--cream: #F7F6E7;
+	--grey: #C7C6C1;
+	--green: #314E52;
+	
+	--bg-light: #FFF6F0;
+}
+body {
+	margin: 0;
+	font-family: "Finlandica", -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+		'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+		sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+code {
+	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+header {
+	background: var(--orange);
+	height: 4em;
+}
+footer {
+	color: var(--grey);
+	background: var(--bg-light);
+}
+.notes {
+	min-height: 100vh;
+	margin-top: 4em;
+	background: var(--bg-light);
+}
+
+h1.navbar-brand {
+	font-size: 2em;
+}
+
+.note {
+	border: 0;
+}
